@@ -10,6 +10,33 @@ const ProfileCard = () => {
             <img src={Cover} alt="" />
             <img src={ProfileImg} alt="" />
         </div>
+
+        <div className="profile-name">
+          <span>Rose Mary</span>
+          <span>Senior Software Engineer</span>
+        </div>
+
+        <div className="follow-status">
+          <hr />
+          <div>
+            <div className="follow">
+              <span>7005</span>
+              <span>followers</span>
+            </div>
+
+            <div className="vl"></div>
+
+            <div className="follow">
+              <span>5</span>
+              <span>following</span>
+            </div>
+          </div>
+          <hr />
+        </div>
+
+        <div className="profile-link">
+          <span>My Profile</span>
+        </div>
     </div>
   )
 }

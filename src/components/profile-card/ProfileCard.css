@@ -5,6 +5,8 @@
     gap: 1rem;
     border-radius: 1.5rem;
     position: relative;
+    overflow-x: clip;
+    background-color: var(--cardColor);
 }
 
 .profile-images
@@ -12,13 +14,14 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
 .profile-images img[src*="coverpic"]
 {
     width: 100%;
+    height: 80%;
 }
 
 .profile-images img[src*="profile"]
@@ -26,5 +29,83 @@
     width: 6rem;
     position: absolute;
     border-radius: 50%;
-    bottom: -3rem;
+    bottom: -1.3rem;
+    box-shadow: var(--profileShadow);
+}
+
+.profile-name
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.3rem;
+}
+
+.profile-name span:nth-of-type(1)
+{
+    font-weight: bold;
+}
+
+/* follow status */
+
+.follow-status
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.follow-status > hr
+{
+    width: 85%;
+    border: 1px solid var(--hrColor);
+}
+
+.follow-status > div
+{
+    display: flex;
+    gap: 1rem;
+    width: 80%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.follow-status .follow
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.follow span:nth-of-type(1)
+{
+    font-weight: bold;
+}
+
+.follow span:nth-of-type(2)
+{
+    color: var(--gray);
+    font-size: 13px;
+}
+
+.follow-status .vl
+{
+    border-left: 2px solid var(--hrColor);
+    height: 150%;
+}
+
+.profile-link
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: #F98A2B;
+    cursor: pointer;
 }
