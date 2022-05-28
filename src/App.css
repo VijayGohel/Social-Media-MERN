@@ -64,3 +64,7 @@ div.blur:nth-child(2)
   border: 2px solid var(--orange);
   cursor: pointer;
 }
+
+::-webkit-scrollbar{
+  display: none;
+}
