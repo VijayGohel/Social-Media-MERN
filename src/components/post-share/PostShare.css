@@ -22,14 +22,15 @@
     width: 90%;
 }
 
-.post-share input
+.post-share > div > textarea
 {
     border: none;
     outline: none;
     padding: 10px;
-    font-size: 17px;
+    font-size: 16px;
     background-color: var(--inputColor);
     border-radius: 10px;
+    resize: none;
 }
 
 .post-options

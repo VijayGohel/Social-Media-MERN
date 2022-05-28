@@ -17,12 +17,18 @@ const PostShare = () => {
           }
     }
 
+    const textAreaAutoHeight= (e)=>{
+        let textarea = document.getElementById('post-text');    
+        textarea.style.height='auto';
+        textarea.style.height = (textarea.scrollHeight)-20 + 'px';
+    }
+
   return (
     <div className='post-share'>
         <img src={ProfileImg} alt="" />
 
         <div>
-            <input type="text" placeholder="What's happening"/>
+            <textarea id='post-text' rows='1' onChange={textAreaAutoHeight} placeholder="What's happening"/>
 
                 <div className="post-options">
                     <div onClick={()=>imageRef.current.click()} className="option" style={{color: "var(--photo)"}}>
@@ -53,7 +59,7 @@ const PostShare = () => {
                 { image &&
                     <div className="previewImage">
                         <UilTimes className="cross-icon" onClick={()=>setImage(null)}/>
-                        <img src={image.imagePath} alt="preview image" />
+                        <img src={image.imagePath} alt="preview" />
                     </div>
                 }
         </div>

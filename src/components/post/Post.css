@@ -27,3 +27,8 @@
 {
     margin: 0.5rem 0 0.5rem;
 }
+
+.detail span:nth-of-type(1)
+{
+    font-weight: 700;
+}

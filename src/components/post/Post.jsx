@@ -18,7 +18,7 @@ const Post = ({post}) => {
         <div>{post.likes} likes</div>
 
         <div className='detail'>
-            <span>{post.name}</span>
+            <span>{post.name} </span>
             <span>{post.desc}</span>
         </div>
     </div>
