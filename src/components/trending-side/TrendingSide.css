@@ -1,0 +1,27 @@
+.trending-side
+{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.trending-side .nav-icons
+{
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.nav-icons img, .nav-icons svg 
+{
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+.trend-share
+{
+    width: 80%;
+    height: 3rem;
+    align-self: center;
+}

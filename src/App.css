@@ -55,6 +55,7 @@ div.blur:nth-child(2)
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Inter', sans-serif;
 }
 
 .button:hover
@@ -63,6 +64,11 @@ div.blur:nth-child(2)
   color: var(--orange);
   border: 2px solid var(--orange);
   cursor: pointer;
+}
+
+input, textarea
+{
+  font-family: 'Inter', sans-serif;
 }
 
 ::-webkit-scrollbar{
