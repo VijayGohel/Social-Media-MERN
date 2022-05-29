@@ -6,7 +6,7 @@ import Home from "../../img/home.png";
 import { UilSetting, UilBell, UilCommentAltMessage } from "@iconscout/react-unicons";
 import TrendCard from "../trend-card/TrendCard"
 
-export const TrendingSide = () => {
+const TrendingSide = () => {
   return (
     <div className="trending-side">
         <div className="nav-icons">
@@ -24,3 +24,5 @@ export const TrendingSide = () => {
     </div>
   )
 }
+
+export default TrendingSide

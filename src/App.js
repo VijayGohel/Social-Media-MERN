@@ -1,5 +1,6 @@
 import "./App.css"
 import Home from "./pages/home/Home"
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
        <div className="blur"> </div>
        <div className="blur"> </div>
 
-      <Home />
+      {/* <Home /> */}
+      <Profile />
 
     </div>
   );
