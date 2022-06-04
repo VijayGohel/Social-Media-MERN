@@ -15,7 +15,7 @@ const Post = ({post}) => {
             <img src={Comment} alt="" />
             <img src={Share} alt="" />
         </div>
-        <div>{post.likes} likes</div>
+        <div className='post-likes'>{post.likes} likes</div>
 
         <div className='detail'>
             <span>{post.name} </span>

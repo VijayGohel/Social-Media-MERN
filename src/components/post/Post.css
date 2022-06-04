@@ -23,6 +23,12 @@
     margin: 1rem 0 0.5rem;
 }
 
+.post-likes
+{
+    font-size: 13px;
+    color: var(--gray);
+}
+
 .detail
 {
     margin: 0.5rem 0 0.5rem;
