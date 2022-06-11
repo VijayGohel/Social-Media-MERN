@@ -1,0 +1,87 @@
+.auth
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    height: 95vh;
+    position: relative;
+}
+
+.logo-side
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo-side > img
+{
+    height: 4rem;
+    width: 4rem;
+}
+
+.logo-side h1
+{
+    font-size: 3rem;
+    color: transparent;
+    background-image: var(--buttonBg);
+    background-repeat: repeat;
+    background-clip: text;
+    background-size: 100%;
+}
+
+.logo-side h6
+{
+    font-size: 0.85rem;
+}
+
+.form-side
+{
+    padding: 1rem;
+    background-color: var(--cardColor);
+    border-radius: 1rem;
+}
+
+.signup-form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.signup-form > div
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.signup-form .form-input
+{
+    flex: 1;
+    background-color: var(--inputColor);
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1.1rem;
+    flex: 1;
+    font-size: 14px;
+}
+
+.login-link
+{
+    font-size: 14px;
+}
+
+.signup-btn
+{
+    height: 2rem;
+    width: 6rem;
+    font-size: 14px;
+}
