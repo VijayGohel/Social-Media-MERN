@@ -11,8 +11,8 @@ function App() {
        <div className="blur"> </div>
 
       {/* <Home /> */}
-      {/* <Profile /> */}
-      <Auth />
+      <Profile />
+      {/* <Auth /> */}
     </div>
   );
 }
