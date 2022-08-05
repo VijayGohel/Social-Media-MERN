@@ -66,6 +66,12 @@ div.blur:nth-child(2)
   cursor: pointer;
 }
 
+.button:disabled
+{
+  background: silver;
+  pointer-events: none;
+}
+
 input, textarea
 {
   font-family: 'Inter', sans-serif;

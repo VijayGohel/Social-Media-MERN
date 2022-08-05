@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Auth.css'
 import Logo from '../../img/logo.png'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login, singup } from '../../actions/AuthAction';
 
 const Auth = () => {
@@ -11,9 +11,9 @@ const Auth = () => {
     const [isSignup , setIsSignup]  = useState(true);
     const [passMatched , setPassMatched] = useState(true);
     const [data , setData] = useState(initialState)
-
     const dispatch = useDispatch();
-    
+    const loading = useSelector(state=>state.authReducer.loading);
+
     const handleChange = (e)=>{
         setData({...data, [e.target.name]: e.target.value});
     }
@@ -83,7 +83,9 @@ const Auth = () => {
                             "Don't have an account? Signup!"}</span>
                 </div>
 
-                <button type="submit" className='button signup-btn'>{isSignup ? "Sign Up" : "Login"}</button>
+                <button type="submit" className='button signup-btn' disabled={loading}>
+                    {loading ? "Loading..." : isSignup ? "Sign Up" : "Login"}
+                </button>
             </form>
         </div>
         
