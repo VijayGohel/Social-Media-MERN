@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import './Auth.css'
 import Logo from '../../img/logo.png'
+import { useDispatch } from 'react-redux';
+import { login, singup } from '../../actions/AuthAction';
 
 const Auth = () => {
 
-    const initialState = { firstName: "",lastName: "",username: "",pass:"",confirmPass:""};
+    const initialState = { firstName: "",lastName: "",userName: "",password:"",confirmPass:""};
 
     const [isSignup , setIsSignup]  = useState(true);
     const [passMatched , setPassMatched] = useState(true);
     const [data , setData] = useState(initialState)
 
+    const dispatch = useDispatch();
+    
     const handleChange = (e)=>{
         setData({...data, [e.target.name]: e.target.value});
     }
@@ -17,9 +21,13 @@ const Auth = () => {
     const handleSubmit = (e)=>{
         e.preventDefault();
 
-        if(data.pass != data.confirmPass)
+        if(isSignup)
         {
-            setPassMatched(false);
+            data.password != data.confirmPass ? setPassMatched(false) : dispatch(singup(data));
+        }
+        else
+        {
+            dispatch(login(data))
         }
     }
 
@@ -56,11 +64,11 @@ const Auth = () => {
                     </div>
                 }
                 <div className="username">
-                    <input type="text" placeholder='Username' value={data.username} onChange={handleChange} name="username" id="user-name" className='form-input'/>
+                    <input type="text" placeholder='Username' value={data.userName} onChange={handleChange} name="userName" id="user-name" className='form-input'/>
                 </div>
 
                 <div className="password">
-                    <input type="password" placeholder='Password' value={data.pass} onChange={handleChange} name="pass" id="pass" className='form-input'/>
+                    <input type="password" placeholder='Password' value={data.password} onChange={handleChange} name="password" id="pass" className='form-input'/>
                     { isSignup &&
                         <input type="password" placeholder='Confirm Password' value={data.confirmPass} onChange={handleChange} name="confirmPass" id="confirm-pass" className='form-input'/>
                     }
