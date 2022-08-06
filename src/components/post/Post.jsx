@@ -6,9 +6,11 @@ import Notlike from "../../img/notlike.png"
 import Share from "../../img/share.png"
 
 const Post = ({post}) => {
+  console.log(process.env.REACT_APP_PUBLIC_FOLDER + post.img);
+
   return (
     <div className='post'>
-        <img className='post-img' src={post.img} alt="" />
+        <img className='post-img' src={post.image ? process.env.REACT_APP_PUBLIC_FOLDER+ "/" + post.image : null} alt="" />
 
         <div className='icons'>
             <img src={post.liked? Like : Notlike } alt="" />
