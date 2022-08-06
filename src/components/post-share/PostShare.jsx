@@ -12,6 +12,7 @@ const PostShare = () => {
     const imageRef = useRef();
     const desc = useRef();
     const user = useSelector(state=>state.authReducer.authData.user);
+    const uploading  = useSelector(state=>state.postReducer.uploading);
 
     const onPhotoUpload = (e)=>{
           if(e.target.files && e.target.files[0])
@@ -49,6 +50,8 @@ const PostShare = () => {
         }
 
         dispatch(uploadPost(postData));
+        setImage(null);
+        desc.current.value="";
     }
 
   return (
@@ -76,7 +79,9 @@ const PostShare = () => {
                         <span>Schedule</span> 
                     </div>
                     
-                    <button onClick={handleUpload} className='button postshare-btn'>Share</button>
+                    <button onClick={handleUpload} className='button postshare-btn' disabled={uploading}>
+                        {uploading ? "Uploading..." : "Share"}
+                    </button>
 
                     <div style={{display:"none"}}>    
                         <input type="file" id="image_uploads" name="image_uploads" 
