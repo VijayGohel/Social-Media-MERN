@@ -13,7 +13,8 @@ const PostShare = () => {
     const desc = useRef();
     const user = useSelector(state=>state.authReducer.authData.user);
     const uploading  = useSelector(state=>state.postReducer.uploading);
-
+    const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+    
     const onPhotoUpload = (e)=>{
           if(e.target.files && e.target.files[0])
           {
@@ -56,7 +57,7 @@ const PostShare = () => {
 
   return (
     <div className='post-share'>
-        <img src={ProfileImg} alt="" />
+        <img src={user.profilePicture ? publicFolder + user.profilePicture : publicFolder+"defaultProfile.png"} alt="" />
 
         <div>
             <textarea ref={desc} id='post-text' rows='1' onChange={textAreaAutoHeight} placeholder="What's happening"/>

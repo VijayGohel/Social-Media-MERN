@@ -6,6 +6,7 @@ import Home from "../../img/home.png";
 import { UilSetting, UilBell, UilCommentAltMessage } from "@iconscout/react-unicons";
 import TrendCard from "../trend-card/TrendCard"
 import ShareModal from "../share-modal/ShareModal"
+import { Link } from "react-router-dom";
 
 const TrendingSide = () => {
 
@@ -14,7 +15,9 @@ const TrendingSide = () => {
   return (
     <div className="trending-side">
         <div className="nav-icons">
-            <img src={Home} alt="" />
+            <Link to={"../home"}>
+              <img src={Home} alt="" />
+            </Link>
             <UilSetting />
             {/* <img src={Noti} alt="" /> */}
             <UilBell />
