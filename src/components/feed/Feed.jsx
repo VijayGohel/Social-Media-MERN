@@ -19,9 +19,9 @@ const Feed = () => {
         <div className="feed">
             {
                 loading ? "Fetching posts..." :
-                posts.map((post,index)=>{
+                posts.map((post)=>{
                     return(
-                        <Post key={index} post={post}/>
+                        <Post key={post._id} post={post}/>
                     )
                 })
             }

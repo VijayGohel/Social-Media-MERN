@@ -13,7 +13,7 @@ const ProfileInfoCard = () => {
 
     const [profileModalOpened,setProfileModalOpened] = useState(false);
 
-    let user = useSelector(state=>state.authReducer.authData.user);
+    let {user} = useSelector(state=>state.authReducer.authData);
     const params = useParams();
     const profileId = params.id;
     const dispatch = useDispatch();
@@ -26,12 +26,10 @@ const ProfileInfoCard = () => {
     const fetchProfileUser = async ()=>{
         if(profileId === user._id){
             setProfileUser(user);
-            console.log("current: "+profileUser);
             }
         else{
             profileUser = await UserApi.getUser(profileId);
             setProfileUser(profileUser.data);
-            console.log("other: "+profileUser);
         }
     }
     useEffect(()=>{
@@ -43,10 +41,12 @@ const ProfileInfoCard = () => {
     <div className='profile-info-card'>
         <div className="info-head">
             <h4>Profile info</h4>
-           { profileId === user._id &&
-                <UilPen width="2rem" height="1.2rem" className="edit-info" onClick={()=>setProfileModalOpened(true)}/>
+           { profileId === user._id && 
+                <>
+                    <UilPen width="2rem" height="1.2rem" className="edit-info" onClick={()=>setProfileModalOpened(true)}/>
+                    <ProfileModal opened={profileModalOpened} setOpened={setProfileModalOpened} data={user}/>
+                </>
            }
-            <ProfileModal opened={profileModalOpened} setOpened={setProfileModalOpened}/>
         </div>
 
         <div className="info">

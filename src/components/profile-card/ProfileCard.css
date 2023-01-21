@@ -28,6 +28,7 @@
 .profile-images img:nth-of-type(2)
 {
     width: 6rem;
+    height: 6rem;
     position: absolute;
     border-radius: 50%;
     bottom: -3rem;
