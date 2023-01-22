@@ -1,6 +1,5 @@
 import React, {useState , useRef } from 'react'
 import "./PostShare.css"
-import ProfileImg from "../../img/profileImg.jpg"
 import {UilScenery, UilPlayCircle, UilLocationPoint,UilSchedule, UilTimes} from "@iconscout/react-unicons";
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadImage, uploadPost } from '../../actions/UploadAction';

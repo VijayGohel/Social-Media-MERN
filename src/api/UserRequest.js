@@ -4,3 +4,4 @@ const API = axios.create({baseURL: "http://localhost:5000"});
 
 export const getUser = (id)=> API.get(`/user/${id}`);
 export const updateUser = (id, data)=> API.patch(`/user/${id}`, data);
+export const getAllUsers = ()=> API.get('/user/');
