@@ -20,21 +20,21 @@ const ProfileCard = ({location}) => {
 
         <div className="profile-name">
           <span>{user.firstName} {user.lastName}</span>
-          <span>{user.worksAt ?? "Write about yourself"}</span>
+          <span>{user.worksAt || "Write about yourself"}</span>
         </div>
 
         <div className="follow-status">
           <hr />
           <div>
             <div className="follow">
-              <span>{user.following.length}</span>
+              <span>{user.followers.length}</span>
               <span>followers</span>
             </div>
 
             <div className="vl"></div>
 
             <div className="follow">
-              <span>{user.followers.length}</span>
+              <span>{user.following.length}</span>
               <span>following</span>
             </div>
 
