@@ -21,7 +21,9 @@ const TrendingSide = () => {
             <UilSetting />
             {/* <img src={Noti} alt="" /> */}
             <UilBell />
-            <UilCommentAltMessage />
+            <Link to={"../chat"}>
+              <UilCommentAltMessage />
+            </Link>
             {/* <img src={Comment} alt="" /> */}
         </div>
 
