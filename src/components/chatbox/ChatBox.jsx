@@ -1,15 +1,18 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getMessages } from '../../api/MessageRequest';
+import { addMessage, getMessages } from '../../api/MessageRequest';
 import { getUser } from '../../api/UserRequest';
 import './ChatBox.css'
+import { format } from 'timeago.js';
+import InputEmojiWithRef from 'react-input-emoji';
 
 const ChatBox = ({ chat, currentUser }) => {
 
     const userId = chat?.members.find((user) => user != currentUser);
     const [userData, setUserData] = useState(null);
     const [messages, setMessages] = useState(null);
+    const [newMessage, setNewMessage] = useState("");
 
     useEffect(() => {
         if (chat) {
@@ -36,6 +39,23 @@ const ChatBox = ({ chat, currentUser }) => {
         }
     }
 
+    const sendMessage = async (e)=>{
+        e.preventDefault();
+
+        const message = {
+            text: newMessage,
+            chatId: chat._id,
+            senderId: currentUser 
+        }
+
+        try {
+            const { data } = await addMessage(message);
+            setMessages([...messages, data]);
+            setNewMessage("");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -61,8 +81,22 @@ const ChatBox = ({ chat, currentUser }) => {
                         </div>
                         <div className="chat-body">
                             {messages?.map((message) =>
-                                (<div key={message._id}>{message.text}</div>)
+                                (
+                                        <div key={message._id} className={`message ${message.senderId==currentUser ? 'own' : null}`}>
+                                            <span>{message.text}</span>
+                                            <span>{format(message.createdAt)}</span>
+                                        </div>
+                                )
                             )}
+                        </div>
+
+                        <div className="chat-sender">
+                            <div>+</div>
+                            <InputEmojiWithRef 
+                                value={newMessage}
+                                onChange={(value)=>setNewMessage(value)}
+                            />
+                            <button className="follow-button button" onClick={sendMessage}>Send</button>
                         </div>
                     </>
                 ) :
