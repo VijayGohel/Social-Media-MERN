@@ -6,6 +6,7 @@ import { getUser } from '../../api/UserRequest';
 import './ChatBox.css'
 import { format } from 'timeago.js';
 import InputEmojiWithRef from 'react-input-emoji';
+import { useRef } from 'react';
 
 const ChatBox = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
 
@@ -13,6 +14,7 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
     const [userData, setUserData] = useState(null);
     const [messages, setMessages] = useState(null);
     const [newMessage, setNewMessage] = useState("");
+    const scroll = useRef(null);
 
     useEffect(() => {
         if (chat) {
@@ -27,6 +29,10 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
             fetchMessages();
         }
     }, [receiveMessage])
+
+    useEffect(() => {
+        scroll?.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }, [messages])
 
     const getUserData = async () => {
         try {
@@ -91,9 +97,9 @@ const ChatBox = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
                             <hr style={{ width: '85%', border: '0.1px solid #ececec' }} />
                         </div>
                         <div className="chat-body">
-                            {messages?.map((message) =>
+                            {messages?.map((message, index) =>
                                 (
-                                    <div key={message._id} className={`message ${message.senderId==currentUser ? 'own' : null}`}>
+                                    <div key={message._id} ref={messages.length-1 == index ? scroll: null} className={`message ${message.senderId==currentUser ? 'own' : ''}`}>
                                         <span>{message.text}</span>
                                         <span>{format(message.createdAt)}</span>
                                     </div>
