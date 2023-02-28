@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { getUser } from '../../api/UserRequest';
 
-const Conversation = ({ data, currentUserId }) => {
+const Conversation = ({ data, currentUserId, online }) => {
   const userId = data.members.find((user) => user != currentUserId);
   const [userData, setUserData] = useState(null);
 
@@ -23,7 +23,7 @@ const Conversation = ({ data, currentUserId }) => {
     <>
       <div className="follower conversation">
         <div>
-          <div className="online-dot"></div>
+          {online && <div className="online-dot"></div>}
           <img
             src={userData?.profilePicture ? process.env.REACT_APP_PUBLIC_FOLDER + userData.profilePicture : process.env.REACT_APP_PUBLIC_FOLDER + 'defaultProfile.png'}
             alt="Profile Picture"
@@ -32,7 +32,7 @@ const Conversation = ({ data, currentUserId }) => {
           />
           <div className="follower-text" style={{ fontSize: '0.8rem' }}>
             <span>{userData?.firstName} {userData?.lastName}</span>
-            <span>Online</span>
+            <span>{online ? "Online" : "Offline"}</span>
           </div>
         </div>
       </div>
