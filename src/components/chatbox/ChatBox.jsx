@@ -7,7 +7,7 @@ import './ChatBox.css'
 import { format } from 'timeago.js';
 import InputEmojiWithRef from 'react-input-emoji';
 
-const ChatBox = ({ chat, currentUser }) => {
+const ChatBox = ({ chat, currentUser, setSendMessage, receiveMessage }) => {
 
     const userId = chat?.members.find((user) => user != currentUser);
     const [userData, setUserData] = useState(null);
@@ -20,6 +20,13 @@ const ChatBox = ({ chat, currentUser }) => {
             fetchMessages();
         }
     }, [chat])
+
+    useEffect(() => {
+        if(receiveMessage && chat && receiveMessage.chatId == chat._id) {
+            // setMessages([...messages, receiveMessage]); key error as received message won't have _id 
+            fetchMessages();
+        }
+    }, [receiveMessage])
 
     const getUserData = async () => {
         try {
@@ -55,6 +62,10 @@ const ChatBox = ({ chat, currentUser }) => {
         } catch (error) {
             console.log(error);
         }
+
+        //send message on socket server
+        const receiverId = chat.members.find((user)=>user!=currentUser);
+        setSendMessage({message, receiverId});
     }
 
     return (
@@ -82,10 +93,10 @@ const ChatBox = ({ chat, currentUser }) => {
                         <div className="chat-body">
                             {messages?.map((message) =>
                                 (
-                                        <div key={message._id} className={`message ${message.senderId==currentUser ? 'own' : null}`}>
-                                            <span>{message.text}</span>
-                                            <span>{format(message.createdAt)}</span>
-                                        </div>
+                                    <div key={message._id} className={`message ${message.senderId==currentUser ? 'own' : null}`}>
+                                        <span>{message.text}</span>
+                                        <span>{format(message.createdAt)}</span>
+                                    </div>
                                 )
                             )}
                         </div>

@@ -17,6 +17,8 @@ const Chat = () => {
     const [chats, setChats] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
+    const [sendMessage, setSendMessage] = useState(null);
+    const [receiveMessage, setReceiveMessage] = useState(null);
     const socket = useRef();
 
     useEffect(() => {
@@ -26,7 +28,17 @@ const Chat = () => {
         socket.current.on("get-users", (users)=>{
             setOnlineUsers(users);
         })
+        socket.current.on("receive-message", (message)=>{
+            setReceiveMessage(message);
+        });
     }, [])
+
+    useEffect(() => {
+        if(sendMessage)
+        {
+            socket.current.emit("send-message", sendMessage);
+        }
+    }, [sendMessage])
 
     const getChats = async ()=>{
         try {
@@ -66,7 +78,12 @@ const Chat = () => {
                     </div>
                 </div>
 
-                <ChatBox chat={currentChat} currentUser={user._id} />
+                <ChatBox 
+                    chat={currentChat} 
+                    currentUser={user._id} 
+                    setSendMessage={setSendMessage} 
+                    receiveMessage={receiveMessage}
+                />
             </div>
         </div>
     )
